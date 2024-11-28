@@ -38,6 +38,19 @@
               echo "-------------------------------------------------------"
               export SHELL=$(which zsh)
               
+              echo "Welcome to the development environment that uses Zsh and avoids the config prompt!";
+
+              # Create a .zshrc file to avoid interactive configuration
+              if [ ! -f ~/.zshrc ]; then
+                echo "Creating .zshrc file..."
+                cat > ~/.zshrc <<EOF
+                # Zsh configurations
+                export ZSH=\$HOME/.oh-my-zsh
+                export ZSH_THEME="powerlevel10k/powerlevel10k"
+                plugins=(git)
+                source \$ZSH/oh-my-zsh.sh
+                EOF
+              fi
               # Ensure we're using Zsh
               if [ -z "$ZSH_VERSION" ]; then
                 echo "Not using Zsh. Switching to Zsh..."
