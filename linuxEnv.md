@@ -13,6 +13,13 @@ sudo apt install wget curl xz-utils git
 
 ## 🧑‍💻Terminal (optional)
 
+Install StarShip
+
+```bash
+curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init bash)"' >> .bash
+```
+
 Install oh-my-bash
 
 ```bash
@@ -27,7 +34,6 @@ source ~/.bashrc
 Configure Git
 
 ```bash
-brew install git
 git config --global user.name "Alejandro Castro"
 git config --global user.email "Alejandro Castro"
 ```
@@ -39,8 +45,11 @@ Follow the commands in order to install and configure nix
 ```bash
 # install nix
 sh <(curl -L https://nixos.org/nix/install) --daemon
+
 # modify nix.conf to enable nix flake
 echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+
+nix develop github:aetherseal/Burning-Flake
 ```
 
 Basic commands of nix flakes

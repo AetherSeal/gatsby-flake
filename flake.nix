@@ -14,24 +14,41 @@
         let
         pkgs = import nixpkgs { inherit system; };
         
-        node = pkgs.nodejs_latest;
-        gatsby = pkgs.nodePackages_latest.gatsby-cli;
-        pnpm = pkgs.pnpm;
+        # node = pkgs.nodejs_latest;
+        # gatsby = pkgs.nodePackages_latest.gatsby-cli;
+        # pnpm = pkgs.pnpm;
+        # docker = pkgs.docker_27;
+
+        starship = pkgs.starship;
         
         in {
             devShells = {
                 
                 default = pkgs.mkShell {
                     # Packages included in the environment
-                    buildInputs = [ node gatsby pnpm ];
+                    # buildInputs = [ node gatsby pnpm docker starship];
+                    buildInputs = [ starship ];
                     
                     # Run when the shell is started up
                     shellHook = ''
-                    echo "=> Resume ---------------------------------------------"
-                    echo "node => `${node}/bin/node --version`"
-                    echo "gatsby-cli => `${gatsby}/bin/gatsby --version`"
-                    echo "pnpm => `${pnpm}/bin/pnpm --version`"
-                    echo "-------------------------------------------------------"
+                    echo 'eval "$(starship init bash)"' >> ~/.bashrc
+                    echo 'source ~/.bashrc'
+
+                    # create a starship.toml file in the current directory if it doesn't exist
+                    if [ ! -f "starship.toml" ]; then
+                        echo "🚀 Starship config does not exist. Creating it..."
+                        touch starship.toml
+                    else
+                        echo "🚀 Starship config already exists."
+                    fi
+
+                    # set the STARSHIP_CONFIG environment variable to the starship.toml file in the current directory
+                    export STARSHIP_CONFIG=$(pwd)/starship.toml
+
+                    # set the preset to pastel-powerline on the config file
+                    starship preset pastel-powerline -o starship.toml
+                    echo "Loading 🚀 Starship config."
+
                     '';                    
                 };
             };
