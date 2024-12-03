@@ -48,7 +48,6 @@
                     # set the preset to pastel-powerline on the config file
                     starship preset pastel-powerline -o starship.toml
                     echo "Loading 🚀 Starship config."
-
                     '';                    
                 };
             };

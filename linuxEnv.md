@@ -13,24 +13,6 @@ sudo apt install wget curl xz-utils git
 
 ## 🧑‍💻Terminal (optional)
 
-Install StarShip
-
-```bash
-curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init bash)"' >> .bash
-```
-
-Install oh-my-bash
-
-```bash
-# download and run oh-my-bash install script
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-# substitute the theme name in ~/.bashrc
-sed -i 's/OSH_THEME=".*"/OSH_THEME="powerbash10k"/' ~/.bashrc
-# reloads the .bashrc file
-source ~/.bashrc
-```
-
 Configure Git
 
 ```bash
@@ -50,15 +32,4 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
 
 nix develop github:aetherseal/Burning-Flake
-```
-
-Basic commands of nix flakes
-
-```bash
-# Updates all inputs of the flake to their latest versions.
-nix flake update
-# Runs an app from a remote flake without installing it.
-nix run github:user/repo
-# Opens a development environment from a remote flake.
-nix develop github:user/repo
 ```
