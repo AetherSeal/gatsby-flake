@@ -31,7 +31,12 @@
                     
                     # Run when the shell is started up
                     shellHook = ''
-                    echo 'eval "$(starship init bash)"' >> ~/.bashrc
+                    if grep -q 'eval "$(starship init bash)"' ~/.bashrc; then
+                        echo "The line exists in .bashrc"
+                    else
+                        echo 'eval "$(starship init bash)"' >> ~/.bashrc
+                    fi
+                    
                     echo 'source ~/.bashrc'
 
                     # create a starship.toml file in the current directory if it doesn't exist
