@@ -12,14 +12,14 @@
     outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
         let
-        pkgs = import nixpkgs { inherit system; };
-        
-        # node = pkgs.nodejs_latest;
-        # gatsby = pkgs.nodePackages_latest.gatsby-cli;
-        # pnpm = pkgs.pnpm;
-        # docker = pkgs.docker_27;
+            pkgs = import nixpkgs { inherit system; };
+            
+            node = pkgs.nodejs_latest;
+            gatsby = pkgs.nodePackages_latest.gatsby-cli;
+            pnpm = pkgs.pnpm;
+            docker = pkgs.docker_27;
 
-        starship = pkgs.starship;
+            starship = pkgs.starship;
         
         in {
             devShells = {
