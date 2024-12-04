@@ -14,20 +14,18 @@
         let
             pkgs = import nixpkgs { inherit system; };
             
-            node = pkgs.nodejs_latest;
+            node = pkgs.nodejs_20;
             gatsby = pkgs.nodePackages_latest.gatsby-cli;
             pnpm = pkgs.pnpm;
-            docker = pkgs.docker_27;
+            yarn = pkgs.yarn-berry
 
             starship = pkgs.starship;
-        
         in {
             devShells = {
                 
                 default = pkgs.mkShell {
                     # Packages included in the environment
-                    # buildInputs = [ node gatsby pnpm docker starship];
-                    buildInputs = [ starship ];
+                    buildInputs = [ starship node gatsby pnpm yarn ];
                     
                     # Run when the shell is started up
                     shellHook = ''
