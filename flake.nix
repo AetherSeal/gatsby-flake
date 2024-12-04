@@ -13,12 +13,10 @@
     flake-utils.lib.eachDefaultSystem (system:
         let
             pkgs = import nixpkgs { inherit system; };
-            
             node = pkgs.nodejs_20;
             gatsby = pkgs.nodePackages_latest.gatsby-cli;
             pnpm = pkgs.pnpm;
-            yarn = pkgs.yarn-berry
-
+            yarn = pkgs.yarn-berry;
             starship = pkgs.starship;
         in {
             devShells = {
