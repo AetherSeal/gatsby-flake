@@ -32,7 +32,7 @@
                     # Run when the shell is started up
                     shellHook = ''
                     # Set the prompt to starship
-                    echo 'eval "$(starship init bash)"' 
+                    eval "$(starship init bash)"
 
                     # create a starship.toml file in the current directory if it doesn't exist
                     if [ ! -f "starship.toml" ]; then
