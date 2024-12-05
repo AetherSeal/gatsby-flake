@@ -44,6 +44,10 @@
                     # set the preset to pastel-powerline on the config file
                     starship preset pastel-powerline -o starship.toml
                     echo "Loading 🚀 Starship config."
+
+                    echo "⚙️ Configuring node."
+                    # set node memory to 8gb
+                    echo "export NODE_OPTIONS=--max_old_space_size=8192"
                     '';                    
                 };
             };
